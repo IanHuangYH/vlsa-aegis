@@ -204,8 +204,9 @@ uv venv --python 3.8 .venv
 source .venv/bin/activate
 uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/cu113 --index-strategy=unsafe-best-match
 
-download pi0.5-libero in vlsa-aegis/checkpoints
-set api_key for ZhipuAiClient in utils.py
+# Manual Steps:
+# Download pi0.5-libero in vlsa-aegis/checkpoints
+# Set api_key for ZhipuAiClient in utils.py
 ```
 
 ### 🚀 Running Evaluation on SafeLIBERO
