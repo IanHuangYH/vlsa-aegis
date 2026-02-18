@@ -23,11 +23,16 @@
 - **[Dec 20, 2025]** 🎉 We have released the **SafeLIBERO benchmark**.
 - **[Dec 9, 2025]** 🔥 Initial release of the **vlsa-aegis** repository.
 
-## 📊 SafeLIBERO Benchmark [![Detailed Overview](https://img.shields.io/badge/-Detailed_Overview-3776AB?logo=readthedocs&logoColor=white)](https://vlsa-aegis.github.io/benchmark.html) [![Video Demos](https://img.shields.io/badge/-Video_Demos-FF0000?logo=youtube&logoColor=white)](https://vlsa-aegis.github.io/)
+<details>
+<summary>
+  <h2 style="display:inline-block; margin:0;">📊 SafeLIBERO Benchmark</h2> 
+  <a href="https://vlsa-aegis.github.io/benchmark.html"><img src="https://img.shields.io/badge/-Detailed_Overview-3776AB?logo=readthedocs&logoColor=white" alt="Detailed Overview"></a>
+  <a href="https://vlsa-aegis.github.io/"><img src="https://img.shields.io/badge/-Video_Demos-FF0000?logo=youtube&logoColor=white" alt="Video Demos"></a>
+</summary>
+
 <p align="center">
   <img src="https://github.com/songqiaohu/pictureandgif/blob/main/safelibero_overview.png?raw=true" alt="overview" width="600">
 </p>  
-
 
 ### 📖 Overview
 
@@ -166,6 +171,55 @@ The following research works have utilized the **SafeLIBERO Benchmark** for expe
 
 
 **Add Your Work**: If you have used this benchmark in your research, please feel free to share your work with us. We are happy to include it in this list to support the research community. We sincerely appreciate the support of the research community and encourage researchers to share their publications using this benchmark. Thank you for your contributions! 
+
+</details> 
+
+<details>
+
+<summary>
+  <h2 style="display:inline-block; margin:0;">🛡️ AEGIS Method</h2> 
+  <a href="https://vlsa-aegis.github.io/benchmark.html"><img src="https://img.shields.io/badge/-Detailed_Overview-3776AB?logo=readthedocs&logoColor=white" alt="Detailed Overview"></a>
+  <a href="https://vlsa-aegis.github.io/"><img src="https://img.shields.io/badge/-Video_Demos-FF0000?logo=youtube&logoColor=white" alt="Video Demos"></a>
+</summary>
+
+<p align="center">
+  <img src="https://github.com/songqiaohu/pictureandgif/blob/main/aegis%20framework.png?raw=true" alt="overview" width="600">
+</p> 
+
+### 📖 Overview
+We propose **AEGIS** (**A**ction **E**xecution **G**uarded by **I**nvariant **S**afety), an instantiation of the *vision-language-safe action* (VLSA) framework that bridges the gap between semantic instruction and physical safety. AEGIS utilizes VLMs and depth information to map semantic risks into physical constraints, solving them via a CBF-based QP solver. By monitoring nominal actions in real-time and intervening only when necessary, AEGIS enforces strict safety guarantees without compromising the VLA model's original task intent.
+
+### 📂 Installation
+Please run the following commands in the given order to install the dependency for **AEGIS**.
+```
+git clone https://github.com/THU-RCSCT/vlsa-aegis.git
+
+cd vlsa-aegis
+uv venv --python 3.11 .aegis_venv
+source .aegis_venv/bin/activate
+uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/cu113 --index-strategy=unsafe-best-match
+
+cd main
+uv venv --python 3.8 .venv
+source .venv/bin/activate
+uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/cu113 --index-strategy=unsafe-best-match
+
+download pi0.5-libero in vlsa-aegis/checkpoints
+set api_key for ZhipuAiClient in utils.py
+```
+
+### 🚀 Running Evaluation on SafeLIBERO
+```
+export PYTHONPATH=$PYTHONPATH:$PWD/safelibero
+python main/main_aegis.py \
+    --task-suite-name safelibero_spatial \
+    --safety-level I \
+    --task-index 0 \
+    --episode-index 0 1 2 3 4 5 \
+    --video-out-path data/libero/videos
+```
+
+</details>
 
 ## Citation <a name="citation"></a>
 If you find the project helpful for your research, please consider citing our paper:
