@@ -203,6 +203,7 @@ uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/
 
 cd main
 uv venv --python 3.8 .venv
+deactivate
 source .venv/bin/activate
 uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/cu113 --index-strategy=unsafe-best-match
 
@@ -212,7 +213,15 @@ uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/
 ```
 
 ### 🚀 Running Evaluation on SafeLIBERO
+Terminal window 1:
 ```
+source .aegis_venv/bin/activate
+uv run scripts/serve_policy.py --env LIBERO
+``` 
+
+Terminal window 2:
+```
+source main/.venv/bin/activate
 export PYTHONPATH=$PYTHONPATH:$PWD/safelibero
 python main/main_aegis.py \
     --task-suite-name safelibero_spatial \
