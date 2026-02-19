@@ -451,7 +451,7 @@ def obstacle_detection(image, instruction, task_suite_name):
     matplotlib.use('Agg')  # ✅ Crucial: No GUI rendering
     import matplotlib.pyplot as plt
     import time
-    api_key = "8e0edbc757734bc986bcb517dc8c6acd.pnjYs0EJ00fN2jMa"
+    api_key = ""
 
     if api_key is None or api_key == "":
         raise ValueError("Please enter api_key")
