@@ -209,6 +209,7 @@ uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/
 
 # Manual Steps:
 # Download pi0.5-libero in vlsa-aegis/checkpoints
+# Download GroundingDINO model in vlsa-aegis/GroundingDINO
 # Set api_key for ZhipuAiClient in utils.py
 ```
 
