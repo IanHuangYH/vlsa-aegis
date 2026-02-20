@@ -76,7 +76,7 @@ numba==0.53.1
 numpy==1.22.4
 open3d==0.19.0
 opencv-python==4.6.0.66
--e file:///mnt/workspace/openpi/packages/openpi-client
+-e ../openpi/packages/openpi-client
 osqp==1.0.5
 packaging==24.2
 pandas==2.0.3
