@@ -2,8 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/openpi/openpi" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/openpi/openpi/third_party/aloha" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/openpi/openpi/third_party/libero" vcs="Git" />
   </component>
 </project>
