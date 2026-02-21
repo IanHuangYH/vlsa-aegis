@@ -15,34 +15,33 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/05618798-a36b-4ee1-b448-04ae45792ce1" alt="overview" width="700">
 </p>  
-
 <h3><strong style="color: #2c3e50;">Baseline</strong></h3>
 
 <table align="center" style="width: 100%; border-collapse: collapse;">
   <tr>
-    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 8px;"><b>Task: Put the cup in the bowl.</b></td>
-    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 8px;"><b>Task: Put the apple in the basket.</b></td>
+    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 5px;"><b>Task: Put the cup in the bowl.</b></td>
+    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 5px;"><b>Task: Put the apple in the basket.</b></td>
   </tr>
   
-  <tr align="center" style="font-size: 13px; font-weight: bold;">
-    <td style="padding-top: 10px;"><span style="color: #d73a49;">❌ SAFETY ❌ SUCCESS</span></td>
-    <td style="padding-top: 10px;"><span style="color: #d73a49;">❌ SAFETY</span> <span style="color: #28a745;">✅ SUCCESS</span></td>
-    <td style="padding-top: 10px;"><span style="color: #d73a49;">❌ SAFETY</span> <span style="color: #28a745;">✅ SUCCESS</span></td>
-    <td style="padding-top: 10px;"><span style="color: #d73a49;">❌ SAFETY ❌ SUCCESS</span></td>
+  <tr align="center" style="font-size: 11px; font-weight: bold;">
+    <td style="padding: 6px 2px;"><span style="color: #d73a49;">❌ SAFETY ❌ SUCCESS</span></td>
+    <td style="padding: 6px 2px;"><span style="color: #d73a49;">❌ SAFETY</span> <span style="color: #28a745;">✅ SUCCESS</span></td>
+    <td style="padding: 6px 2px;"><span style="color: #d73a49;">❌ SAFETY</span> <span style="color: #28a745;">✅ SUCCESS</span></td>
+    <td style="padding: 6px 2px;"><span style="color: #d73a49;">❌ SAFETY ❌ SUCCESS</span></td>
   </tr>
   
   <tr>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-cup_I_cropped.gif?raw=true" width="100%"></td>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-cup_II_cropped.gif?raw=true" width="100%"></td>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-apple_I_cropped.gif?raw=true" width="100%"></td>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-apple_II_cropped.gif?raw=true" width="100%"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-cup_I_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-cup_II_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-apple_I_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-apple_II_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
   </tr>
   
-  <tr align="center" style="font-size: 14px; color: #586069;">
-    <td>(a) Level I</td>
-    <td>(b) Level II</td>
-    <td>(c) Level I</td>
-    <td>(d) Level II</td>
+  <tr align="center" style="font-size: 13px; color: #586069;">
+    <td style="padding-top: 4px;">(a) Level I</td>
+    <td style="padding-top: 4px;">(b) Level II</td>
+    <td style="padding-top: 4px;">(c) Level I</td>
+    <td style="padding-top: 4px;">(d) Level II</td>
   </tr>
 </table>
 
@@ -52,31 +51,31 @@
 
 <table align="center" style="width: 100%; border-collapse: collapse;">
   <tr>
-    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 8px;"><b>Task: Put the cup in the bowl.</b></td>
-    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 8px;"><b>Task: Put the apple in the basket.</b></td>
+    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 5px;"><b>Task: Put the cup in the bowl.</b></td>
+    <td colspan="2" align="center" style="border-bottom: 1px solid #e1e4e8; padding-bottom: 5px;"><b>Task: Put the apple in the basket.</b></td>
   </tr>
   
-  <tr align="center" style="font-size: 13px; font-weight: bold;">
-    <td style="padding-top: 10px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
-    <td style="padding-top: 10px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
-    <td style="padding-top: 10px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
-    <td style="padding-top: 10px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
+  <tr align="center" style="font-size: 11px; font-weight: bold;">
+    <td style="padding: 6px 2px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
+    <td style="padding: 6px 2px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
+    <td style="padding: 6px 2px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
+    <td style="padding: 6px 2px;"><span style="color: #28a745;">✅ SAFETY ✅ SUCCESS</span></td>
   </tr>
   
   <tr>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-cup_I_cropped.gif?raw=true" width="100%" style="border: 2px solid #0366d6; border-radius: 6px; box-sizing: border-box;"></td>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-cup_II_cropped.gif?raw=true" width="100%" style="border: 2px solid #0366d6; border-radius: 6px; box-sizing: border-box;"></td>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-apple_I_cropped.gif?raw=true" width="100%" style="border: 2px solid #0366d6; border-radius: 6px; box-sizing: border-box;"></td>
-    <td width="25%"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-apple_II_cropped.gif?raw=true" width="100%" style="border: 2px solid #0366d6; border-radius: 6px; box-sizing: border-box;"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-cup_I_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-cup_II_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-apple_I_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
+    <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-apple_II_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
   </tr>
   
-  <tr align="center" style="font-size: 14px; color: #586069;">
-    <td>(a) Level I</td>
-    <td>(b) Level II</td>
-    <td>(c) Level I</td>
-    <td>(d) Level II</td>
+  <tr align="center" style="font-size: 13px; color: #586069;">
+    <td style="padding-top: 4px;">(a) Level I</td>
+    <td style="padding-top: 4px;">(b) Level II</td>
+    <td style="padding-top: 4px;">(c) Level I</td>
+    <td style="padding-top: 4px;">(d) Level II</td>
   </tr>
-</table> 
+</table>
 
 ## 📢 Updates
 
