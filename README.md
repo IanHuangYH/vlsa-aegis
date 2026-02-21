@@ -37,7 +37,7 @@
     <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/baseline/freecompress-apple_II_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
   </tr>
   
-  <tr align="center" style="font-size: 13px; color: #586069;">
+  <tr align="center" style="font-size: 11px; color: #586069;">
     <td style="padding-top: 4px;">(a) Level I</td>
     <td style="padding-top: 4px;">(b) Level II</td>
     <td style="padding-top: 4px;">(c) Level I</td>
@@ -69,7 +69,7 @@
     <td style="width: 25%; padding: 2px;"><img src="https://github.com/VLSA-AEGIS/VLSA-AEGIS.github.io/blob/main/real_world/ours/freecompress-apple_II_cropped.gif?raw=true" style="width: 100%; display: block;"></td>
   </tr>
   
-  <tr align="center" style="font-size: 13px; color: #586069;">
+  <tr align="center" style="font-size: 11px; color: #586069;">
     <td style="padding-top: 4px;">(a) Level I</td>
     <td style="padding-top: 4px;">(b) Level II</td>
     <td style="padding-top: 4px;">(c) Level I</td>
