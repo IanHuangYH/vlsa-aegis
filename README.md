@@ -76,7 +76,8 @@
     <td>(c) Level I</td>
     <td>(d) Level II</td>
   </tr>
-</table>
+</table> 
+
 ## 📢 Updates
 
 - **[Feb 19, 2026]** 🎉 We have released the **AEGIS** code.
