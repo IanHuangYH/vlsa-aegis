@@ -277,12 +277,39 @@ uv venv --python 3.8 .venv
 deactivate
 source .venv/bin/activate
 uv pip sync requirements.txt --extra-index-url https://download.pytorch.org/whl/cu113 --index-strategy=unsafe-best-match
-
-# Manual Steps:
-# Download pi0.5-libero in vlsa-aegis/checkpoints
-# Download GroundingDINO model in vlsa-aegis/GroundingDINO
-# Set api_key for ZhipuAiClient in utils.py
 ```
+
+### 🔽 Manual model downloads (required)
+
+1) **Download pi0.5-libero checkpoint** to `vlsa-aegis/checkpoints/pi05_libero`
+
+```bash
+source .aegis_venv/bin/activate
+python - <<'PY'
+from pathlib import Path
+import gcsfs
+
+src = 'openpi-assets/checkpoints/pi05_libero'
+dst = Path('checkpoints/pi05_libero')
+dst.parent.mkdir(parents=True, exist_ok=True)
+
+fs = gcsfs.GCSFileSystem(token='anon')
+fs.get(src, str(dst), recursive=True)
+print(f'downloaded: gs://{src} -> {dst.resolve()}')
+PY
+```
+
+2) **Download GroundingDINO config + weights** to `vlsa-aegis/GroundingDINO`
+
+```bash
+mkdir -p GroundingDINO
+curl -fL "https://raw.githubusercontent.com/IDEA-Research/GroundingDINO/main/groundingdino/config/GroundingDINO_SwinT_OGC.py" \
+  -o GroundingDINO/GroundingDINO_SwinT_OGC.py
+curl -fL "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth" \
+  -o GroundingDINO/groundingdino_swint_ogc.pth
+```
+
+3) **Set API key** for `ZhipuAiClient` in `utils.py`.
 
 ### 🚀 Running Evaluation on SafeLIBERO
 Terminal window 1:
@@ -295,6 +322,13 @@ Terminal window 2:
 ```
 source main/.venv/bin/activate
 export PYTHONPATH=$PYTHONPATH:$PWD/safelibero
+# Headless rendering fix (some servers do not support MuJoCo EGL extensions)
+export MUJOCO_GL=glx
+
+# If DISPLAY is empty, start a virtual display first
+Xvfb :99 -screen 0 1400x900x24 >/tmp/xvfb_aegis.log 2>&1 &
+export DISPLAY=:99
+
 python main/main_aegis.py \
     --task-suite-name safelibero_spatial \
     --safety-level I \
@@ -302,6 +336,10 @@ python main/main_aegis.py \
     --episode-index 0 1 2 3 4 5 \
     --video-out-path data/libero/videos
 ```
+
+> [!NOTE]
+> If you encounter `ImportError: eglQueryDevicesEXT is not available`, use the `MUJOCO_GL=glx` setup above.
+> If `Xvfb` is not installed, install it first (e.g., Ubuntu: `sudo apt-get install -y xvfb`, Conda: `conda install -c conda-forge xorg-xvfb`).
 
 </details>
 
