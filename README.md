@@ -140,6 +140,15 @@ cd vlsa-aegis/safelibero
 pip install -r requirements.txt
 ```
 
+> [!NOTE]
+> `safelibero/requirements.txt` pins `robosuite==1.4.1` for API compatibility and includes `cmake>=3.22` to avoid `egl_probe` build failures.
+>
+> If you installed dependencies before these pins were added, run:
+> ```
+> pip install "robosuite==1.4.1" "cmake>=3.22" "tyro==0.9.2"
+> pip install -r requirements.txt
+> ```
+
 ### 🚀 Running Evaluation
 ```
 export PYTHONPATH=$PYTHONPATH:$PWD/safelibero
@@ -250,6 +259,8 @@ The following research works have utilized the **SafeLIBERO Benchmark** for expe
 We propose **AEGIS** (**A**ction **E**xecution **G**uarded by **I**nvariant **S**afety), an instantiation of the *vision-language-safe action* (VLSA) framework that bridges the gap between semantic instruction and physical safety. AEGIS utilizes VLMs and depth information to map semantic risks into physical constraints, solving them via a CBF-based QP solver. By monitoring nominal actions in real-time and intervening only when necessary, AEGIS enforces strict safety guarantees without compromising the VLA model's original task intent.
 
 ### 📂 Installation
+This section is for the **full AEGIS pipeline** (policy server + safety layer), not required for standalone SafeLIBERO benchmark replay.
+
 Please run the following commands in the given order to install the dependency for **AEGIS**.
 ```
 git clone https://github.com/THU-RCSCT/vlsa-aegis.git
