@@ -309,7 +309,15 @@ curl -fL "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.
   -o GroundingDINO/groundingdino_swint_ogc.pth
 ```
 
-3) **Set API key** for `ZhipuAiClient` in `utils.py`.
+3) **Set Zhipu API key** (for obstacle detection VLM call)
+
+```bash
+export ZHIPU_API_KEY="your_zhipu_api_key"
+```
+
+> [!NOTE]
+> This key is for **Zhipu AI** (`ZhipuAiClient` / `glm-4.5v`), not Hugging Face.
+> You can also use `GLM_API_KEY` as a fallback env var.
 
 ### 🚀 Running Evaluation on SafeLIBERO
 Terminal window 1:
@@ -320,26 +328,44 @@ uv run scripts/serve_policy.py --env LIBERO
 
 Terminal window 2:
 ```
-source main/.venv/bin/activate
-export PYTHONPATH=$PYTHONPATH:$PWD/safelibero
-# Headless rendering fix (some servers do not support MuJoCo EGL extensions)
-export MUJOCO_GL=glx
+bash run_aegis_headless.sh \
+  --task-suite-name safelibero_goal \
+  --safety-level II \
+  --task-index 0 \
+  --episode-index 0 1 2 3 4 5 \
+  --video-out-path eval_logs/safelibero_goal/videos
+```
 
-# If DISPLAY is empty, start a virtual display first
-Xvfb :99 -screen 0 1400x900x24 >/tmp/xvfb_aegis.log 2>&1 &
-export DISPLAY=:99
+Or run with the helper script (recommended for headless servers):
 
-python main/main_aegis.py \
-    --task-suite-name safelibero_spatial \
-    --safety-level I \
-    --task-index 0 \
-    --episode-index 0 1 2 3 4 5 \
-    --video-out-path data/libero/videos
+```bash
+bash run_aegis_headless.sh
+```
+
+Custom arguments are also supported:
+
+```bash
+bash run_aegis_headless.sh \
+  --task-suite-name safelibero_spatial \
+  --safety-level I \
+  --task-index 0 \
+  --episode-index 0 1 2 3 4 5 \
+  --video-out-path data/libero/videos
 ```
 
 > [!NOTE]
-> If you encounter `ImportError: eglQueryDevicesEXT is not available`, use the `MUJOCO_GL=glx` setup above.
+> `run_aegis_headless.sh` now uses `MUJOCO_GL=egl` by default and sanitizes `LD_LIBRARY_PATH` to avoid MATLAB `libEGL.so` shadowing system EGL (a common cause of `eglQueryDevicesEXT` errors).
+> If you manually force `MUJOCO_GL=glx`, the script can still start `Xvfb` automatically when `DISPLAY` is empty.
+> If you see `Exit 127` or `X11: Failed to open display :99`, your `Xvfb` likely did not start.
 > If `Xvfb` is not installed, install it first (e.g., Ubuntu: `sudo apt-get install -y xvfb`, Conda: `conda install -c conda-forge xorg-xvfb`).
+
+### 🛠️ What changed in the headless fix
+
+- Added [run_aegis_headless.sh](run_aegis_headless.sh) as the recommended launcher.
+- Switched default backend to EGL (`MUJOCO_GL=egl`, `PYOPENGL_PLATFORM=egl`) for headless stability.
+- Sanitized `LD_LIBRARY_PATH` to remove MATLAB entries that can load an incompatible `libEGL.so`.
+- Kept GLX + Xvfb as an optional fallback path.
+- If rendering succeeds but run stops with `Please enter api_key`, set `ZhipuAiClient` API key in `main/utils.py`.
 
 </details>
 
