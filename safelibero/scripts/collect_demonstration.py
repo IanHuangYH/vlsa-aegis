@@ -3,6 +3,7 @@ import cv2
 import datetime
 import h5py
 import init_path
+import inspect
 import json
 import numpy as np
 import os
@@ -312,9 +313,27 @@ if __name__ == "__main__":
         device = Keyboard(
             pos_sensitivity=args.pos_sensitivity, rot_sensitivity=args.rot_sensitivity
         )
-        env.viewer.add_keypress_callback("any", device.on_press)
-        env.viewer.add_keyup_callback("any", device.on_release)
-        env.viewer.add_keyrepeat_callback("any", device.on_press)
+        try:
+            keypress_params = len(inspect.signature(env.viewer.add_keypress_callback).parameters)
+            keyup_params = len(inspect.signature(env.viewer.add_keyup_callback).parameters)
+            keyrepeat_params = len(inspect.signature(env.viewer.add_keyrepeat_callback).parameters)
+
+            if keypress_params == 2:
+                env.viewer.add_keypress_callback("any", device.on_press)
+            else:
+                env.viewer.add_keypress_callback(device.on_press)
+
+            if keyup_params == 2:
+                env.viewer.add_keyup_callback("any", device.on_release)
+            else:
+                env.viewer.add_keyup_callback(device.on_release)
+
+            if keyrepeat_params == 2:
+                env.viewer.add_keyrepeat_callback("any", device.on_press)
+            else:
+                env.viewer.add_keyrepeat_callback(device.on_press)
+        except AttributeError:
+            pass
     elif args.device == "spacemouse":
         from robosuite.devices import SpaceMouse
 
