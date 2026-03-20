@@ -133,8 +133,8 @@
 ### 📂 Installation
 Please run the following commands in the given order to install the dependency for **SafeLIBERO**.
 ```
-conda create -n libero python=3.8.13
-conda activate libero
+conda create -n safelibero python=3.8.13
+conda activate safelibero
 git clone https://github.com/THU-RCSCT/vlsa-aegis.git
 cd vlsa-aegis/safelibero
 pip install -r requirements.txt
