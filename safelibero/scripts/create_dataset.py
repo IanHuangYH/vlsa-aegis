@@ -64,10 +64,10 @@ def main():
 
     bddl_file_name = f["data"].attrs["bddl_file_name"]
 
-    bddl_file_dir = os.path.dirname(bddl_file_name)
-    replace_bddl_prefix = "/".join(bddl_file_dir.split("bddl_files/")[:-1] + "bddl_files")
-
-    hdf5_path = os.path.join(get_libero_path("datasets"), bddl_file_dir.split("bddl_files/")[-1].replace(".bddl", "_demo.hdf5"))
+    bddl_rel_path = bddl_file_name.split("bddl_files/")[-1]
+    hdf5_path = os.path.join(
+        get_libero_path("datasets"), bddl_rel_path.replace(".bddl", "_demo.hdf5")
+    )
 
     output_parent_dir = Path(hdf5_path).parent
     output_parent_dir.mkdir(parents=True, exist_ok=True)
@@ -229,8 +229,9 @@ def main():
         dones[-1] = 1
         rewards = np.zeros(len(actions)).astype(np.uint8)
         rewards[-1] = 1
-        print(len(actions), len(agentview_images))
-        assert len(actions) == len(agentview_images)
+        if args.use_camera_obs:
+            print(len(actions), len(agentview_images))
+            assert len(actions) == len(agentview_images)
         print(len(actions))
 
         ep_data_grp = grp.create_group(f"demo_{i}")
@@ -245,27 +246,32 @@ def main():
             obs_grp.create_dataset("ee_pos", data=np.stack(ee_states, axis=0)[:, :3])
             obs_grp.create_dataset("ee_ori", data=np.stack(ee_states, axis=0)[:, 3:])
 
-        obs_grp.create_dataset("agentview_rgb", data=np.stack(agentview_images, axis=0))
-        obs_grp.create_dataset(
-            "eye_in_hand_rgb", data=np.stack(eye_in_hand_images, axis=0)
-        )
-        if args.use_depth:
+        if args.use_camera_obs:
+            obs_grp.create_dataset("agentview_rgb", data=np.stack(agentview_images, axis=0))
             obs_grp.create_dataset(
-                "agentview_depth", data=np.stack(agentview_depths, axis=0)
+                "eye_in_hand_rgb", data=np.stack(eye_in_hand_images, axis=0)
             )
-            obs_grp.create_dataset(
-                "eye_in_hand_depth", data=np.stack(eye_in_hand_depths, axis=0)
-            )
+            if args.use_depth:
+                obs_grp.create_dataset(
+                    "agentview_depth", data=np.stack(agentview_depths, axis=0)
+                )
+                obs_grp.create_dataset(
+                    "eye_in_hand_depth", data=np.stack(eye_in_hand_depths, axis=0)
+                )
 
         ep_data_grp.create_dataset("actions", data=actions)
         ep_data_grp.create_dataset("states", data=states)
         ep_data_grp.create_dataset("robot_states", data=np.stack(robot_states, axis=0))
         ep_data_grp.create_dataset("rewards", data=rewards)
         ep_data_grp.create_dataset("dones", data=dones)
-        ep_data_grp.attrs["num_samples"] = len(agentview_images)
+        if args.use_camera_obs:
+            ep_data_grp.attrs["num_samples"] = len(agentview_images)
+            total_len += len(agentview_images)
+        else:
+            ep_data_grp.attrs["num_samples"] = len(actions)
+            total_len += len(actions)
         ep_data_grp.attrs["model_file"] = model_xml
         ep_data_grp.attrs["init_state"] = states[init_idx]
-        total_len += len(agentview_images)
 
     grp.attrs["num_demos"] = len(demos)
     grp.attrs["total"] = total_len
